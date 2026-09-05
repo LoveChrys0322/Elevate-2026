@@ -7229,7 +7229,7 @@ h1,h2,h3,.page-title,.journal-v7-head h1,.faith-page-title,.nr25-head h1,.wkx-de
 <body>
 <div class="app">
 <aside class="side">
-<div class="brand"><div class="big">ELEVATE</div><div class="year">— 2026 —</div><div class="tag">BUILDING MY BEST LIFE</div><div class="tag" style="margin-top:6px;opacity:.55;font-size:8px;letter-spacing:1px">BUILD 2026-09-05 19:47 UTC</div></div>
+<div class="brand"><div class="big">ELEVATE</div><div class="year">— 2026 —</div><div class="tag">BUILDING MY BEST LIFE</div><div class="tag" style="margin-top:6px;opacity:.55;font-size:8px;letter-spacing:1px">BUILD 2026-09-05 20:35 UTC</div></div>
 <div class="navsec">OVERVIEW</div>
 <div class="nav active" data-page="home">⌂ <span>Home</span></div>
 <div class="nav" data-page="today">▣ <span>Today</span></div>
@@ -7767,6 +7767,7 @@ I already know what I’m capable of.</p>
 <div class="faith-lower-grid">
 <div class="faith-history-card"><div class="faith-card-title">RECENT BIBLE STUDIES</div><div id="bibleEntries"></div><button type="button" class="fv9-viewall" onclick="viewAllBibleStudies()">View All →</button></div>
 <div class="faith-history-card"><div class="faith-card-title">FAITH JOURNAL HISTORY</div><div id="faithEntries"></div><button type="button" class="fv9-viewall" onclick="viewAllFaithJournal()">View All →</button></div>
+<div id="wapfOverviewCard" class="faith-history-card"></div>
 <div id="apv1FaithCompact" class="faith-history-card"></div><div style="display:none"><span id="answeredCount"></span><span id="prayerText"></span><span id="prayerList"></span></div>
 </div>
 </section>
@@ -18693,6 +18694,46 @@ window.BTBO_RESUMES = [
       if(+r.megabytes>=3.8 && window.showElevateStorageFullBanner) window.showElevateStorageFullBanner(true);
     },250);
   });
+})();
+</script>
+
+<script id="wapf-overview-card-v1">
+(function(){
+  const esc=v=>String(v??'').replace(/[&<>"']/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[s]));
+  const fmtDate=k=>{if(!k)return'';const[y,m,d]=String(k).split('-').map(Number);if(!y)return'';return new Date(y,(m||1)-1,d||1,12,0,0).toLocaleDateString('en-US',{month:'short',day:'numeric'})};
+
+  window.wapfOverviewRender=function(){
+    const el=document.getElementById('wapfOverviewCard');
+    if(!el) return;
+    const list=(typeof db!=='undefined' && db.simple && db.simple.prayingForV1 && Array.isArray(db.simple.prayingForV1.people))?db.simple.prayingForV1.people:[];
+    const active=list.filter(p=>!p.answered).sort((a,b)=>(b.dateAdded||'').localeCompare(a.dateAdded||''));
+    const shown=active.slice(0,5);
+    el.innerHTML=`<div class="faith-card-title">WHO AM I PRAYING FOR<span class="apv1-count" style="margin-left:8px">${active.length}</span></div>
+      <div class="apv1-list">${shown.length?shown.map(p=>`<div class="apv1-row"><span class="apv1-label">${esc(p.name)}${p.text?`<span class="apv1-sub2">${esc(p.text)}</span>`:''}</span><span class="apv1-date">${esc(p.category||'Other')}${p.dateAdded?' • '+fmtDate(p.dateAdded):''}</span></div>`).join(''):'<div class="apv1-empty">Nobody on your active list yet — add someone below.</div>'}</div>
+      <button type="button" class="fv9-viewall" onclick="wapfOpen()">${active.length>5?'View All '+active.length+' →':'Open Full List →'}</button>`;
+  };
+
+  ['wapfSave','wapfAnswer','wapfUnanswer','wapfDelete'].forEach(name=>{
+    const orig=window[name];
+    if(typeof orig==='function' && !orig.__wapfOvWrapped){
+      const wrapped=function(){const r=orig.apply(this,arguments);window.wapfOverviewRender?.();return r;};
+      wrapped.__wapfOvWrapped=true;
+      window[name]=wrapped;
+    }
+  });
+
+  const oldGo=window.go;
+  if(typeof oldGo==='function' && !oldGo.__wapfOvWrapped){
+    const wrapped=function(){
+      const r=oldGo.apply(this,arguments);
+      setTimeout(()=>window.wapfOverviewRender?.(),60);
+      return r;
+    };
+    wrapped.__wapfOvWrapped=true;
+    window.go=wrapped;
+  }
+
+  document.addEventListener('DOMContentLoaded',()=>setTimeout(()=>window.wapfOverviewRender?.(),300));
 })();
 </script>
 </body></html>
