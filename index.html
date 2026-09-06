@@ -7230,11 +7230,36 @@ h1,h2,h3,.page-title,.journal-v7-head h1,.faith-page-title,.nr25-head h1,.wkx-de
 #journal.jv81-writing .jv81-back:hover,#faith.fv81-writing .fv81-back:hover{background:#f5e7dc!important}
 </style>
 <style id="nourish-calorie-estimator-v8-2">#nourish .nr25-calculator{margin:0 0 14px!important;padding:18px!important}#nourish .nr25-cal-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:10px}#nourish .nr25-cal-sub{font-size:10px;line-height:1.5;color:#7b695e;margin-top:4px;max-width:780px}#nourish .nr25-cal-badge{font-size:8px;font-weight:800;letter-spacing:.8px;color:#8e5130;background:#f4e6da;border:1px solid #e6d4c6;border-radius:999px;padding:5px 8px}#nourish #nr25CalorieFood{min-height:90px;font-size:12px;line-height:1.55}#nourish .nr25-cal-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}#nourish .nr25-cal-result{margin-top:14px;border:1px solid #e8d7ca;border-radius:12px;background:#fffaf6;padding:14px}#nourish .nr25-cal-total{display:flex;justify-content:space-between;gap:12px;align-items:center;padding-bottom:10px;border-bottom:1px solid #ecdfd5}#nourish .nr25-cal-total strong{font:700 32px 'Cormorant Garamond',serif;color:#6e3f27}#nourish .nr25-cal-total span{font-size:10px;color:#7c695c}#nourish .nr25-cal-breakdown{display:grid;gap:7px;margin-top:10px}#nourish .nr25-cal-line{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;padding:6px 0;border-bottom:1px dashed #eadbd0;font-size:10px}#nourish .nr25-cal-line:last-child{border-bottom:0}#nourish .nr25-cal-line b{font-size:10px}#nourish .nr25-cal-line small{display:block;color:#8a786c;margin-top:2px}#nourish .nr25-cal-confidence{margin-top:10px;padding:9px 10px;border-radius:9px;background:#f6ece4;font-size:9px;color:#755e50}#nourish .nr25-cal-disclaimer{font-size:8.5px;color:#89786c;line-height:1.45;margin-top:10px}#nourish .nr25-cal-add{margin-top:10px}@media(max-width:700px){#nourish .nr25-cal-head{flex-direction:column}}</style>
+<style id="elevate-mobile-layout-safety">
+/* Keep the existing desktop sidebar and page structure, but make the fixed
+   flex layout safe on narrow screens. */
+@media(max-width:820px){
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  .app{display:block!important;width:100%;min-width:0}
+  .side{position:relative!important;inset:auto!important;width:100%!important;max-width:none!important;height:auto!important;min-height:0!important;max-height:none!important;padding:16px 12px!important;overflow:visible!important}
+  .brand{margin-bottom:12px!important}
+  .side .navsec{display:block!important;margin:14px 6px 5px!important}
+  .side .nav{display:inline-flex!important;vertical-align:top;width:auto!important;min-width:0!important;margin:2px!important;white-space:nowrap!important}
+  .side .side-art,.side .side-mantra{display:none!important}
+  .main{margin-left:0!important;width:100%!important;max-width:none!important;min-width:0!important;padding:16px 12px 28px!important}
+  .page,.card,.grid,.topline,.toolbar,.table,.table-wrap,.habit-week-grid{min-width:0;max-width:100%}
+  .page-feature{grid-template-columns:1fr!important;height:auto!important;min-height:0!important}
+  .page-feature img{width:100%!important;height:150px!important;min-height:150px!important}
+  .table-wrap,.habit-week-grid{overflow-x:auto}
+  img,video,canvas{max-width:100%}
+  input,select,textarea{max-width:100%}
+}
+@media(max-width:600px){
+  .main{padding-left:10px!important;padding-right:10px!important}
+  .formgrid,.hero-home,.home-row,.home-bottom,.today-grid,.today-lower,.home-mid{grid-template-columns:1fr!important}
+  .calendar{grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
+}
+</style>
 </head>
 <body>
 <div class="app">
 <aside class="side">
-<div class="brand"><div class="big">ELEVATE</div><div class="year">— 2026 —</div><div class="tag">BUILDING MY BEST LIFE</div><div class="tag" style="margin-top:6px;opacity:.55;font-size:8px;letter-spacing:1px">BUILD 2026-09-06 02:00 UTC</div></div>
+<div class="brand"><div class="big">ELEVATE</div><div class="year">— 2026 —</div><div class="tag">BUILDING MY BEST LIFE</div><div class="tag" style="margin-top:6px;opacity:.55;font-size:8px;letter-spacing:1px">BUILD 2026-09-06 04:15 UTC</div></div>
 <div class="navsec">OVERVIEW</div>
 <div class="nav active" data-page="home">⌂ <span>Home</span></div>
 <div class="nav" data-page="today">▣ <span>Today</span></div>
@@ -8677,6 +8702,20 @@ Grocery store"></textarea>
 </div>
 <div class="tk17-empty" id="tk17Empty" style="display:none">No tasks in this view.</div>
 </div>
+<div class="card tk17-board" id="mctBoard">
+<div class="tk17-board-head">
+<div class="tk17-title">⚖   MYCASE OPEN TASKS</div>
+<button class="btn light" type="button" onclick="mctRefresh()" style="padding:6px 14px;font-size:12px">↻ Refresh</button>
+</div>
+<p class="small" style="margin:2px 0 10px">Private to your sign-in — synced from MyCase, never included in the public app file. <span id="mctSyncedAt"></span></p>
+<div class="tk17-tablewrap">
+<table class="table tk17-table">
+<thead><tr><th>Task</th><th>Case</th><th>Due Date</th><th>Priority</th></tr></thead>
+<tbody id="mctTableBody"></tbody>
+</table>
+</div>
+<div class="tk17-empty" id="mctEmpty" style="display:none">No MyCase tasks synced yet. Import a file in Settings → Import MyCase Tasks.</div>
+</div>
 <div class="modal" id="tk17Modal"><div class="modalbox tk17-modalbox">
 <div class="tk17-modal-head">
 <div><div class="eyebrow">TASKS</div><h2 id="tk17ModalTitle">Add Task</h2></div>
@@ -8948,6 +8987,14 @@ Grocery store"></textarea>
 <input type="file" id="ahWorkoutsFile" accept=".csv,text/csv">
 <button class="btn light" id="ahWorkoutsBtn" type="button" onclick="ahImportWorkouts()" disabled>Import Workouts</button>
 <div class="small" id="ahWorkoutsStatus" style="margin-top:6px"></div>
+</div>
+<div class="card" id="mctImportCard">
+<div class="ctitle">Import MyCase Tasks</div>
+<p class="small">Loads your open MyCase tasks into a private, secure table only you can access (never stored in the public app file). Ask me any time for a fresh export file, then upload it here.</p>
+<label class="ah-import-label">MyCase Tasks File (.json)</label>
+<input type="file" id="mctImportFile" accept=".json,application/json">
+<button class="btn light" id="mctImportBtn" type="button" onclick="mctImportFile()" disabled>Import Tasks</button>
+<div class="small" id="mctImportStatus" style="margin-top:6px"></div>
 </div></div><div class="card inspiration-copy-card right-copy"><div class="copy"><span class="sample-badge">Elevate</span><h3>Settings</h3><p>The quiet page that keeps everything working.</p></div></div><div class="card page-quote-card"><span class="page-quote-mark">“</span><span class="page-quote-text dailyQuoteText"></span><span class="page-quote-label">Daily quote</span></div></section>
 </main>
 </div>
@@ -8962,13 +9009,9 @@ const defaultDB={"habitDays":{},"steps":{},"priorities":[],"schedule":[],"focus"
 window.__elevateFreshCopy=(localStorage.getItem(KEY)===null);
 let db;try{db=JSON.parse(localStorage.getItem(KEY))||structuredClone(defaultDB)}catch(e){db=structuredClone(defaultDB)}
 for(const k in defaultDB) if(db[k]===undefined) db[k]=structuredClone(defaultDB[k]);db.steps=db.steps||{};db.prayers=db.prayers||[];db.careInspo=db.careInspo||[];
-// Book Log and Movie Log intentionally removed from this ELEVATE build.
-// Empty old records once so their uploaded cover/poster data no longer occupies browser storage.
-if((db.books&&db.books.length)||(db.movies&&db.movies.length)){
-  db.books=[];
-  db.movies=[];
-  try{localStorage.setItem(KEY,JSON.stringify(db));}catch(e){console.warn('ELEVATE media-log cleanup:',e);}
-}
+// Book and movie collections are user data. Never clear them during startup.
+// Older builds removed these arrays unconditionally, which could erase saved
+// entries (and their cover/poster data) on every reload.
 
 
 const DAILY_QUOTES=[
@@ -9168,7 +9211,26 @@ function logPleading(){db.pleadings.push({id:Date.now(),date:iso(),type:$('plead
 function saveSimple(k,v){db.simple[k]=v;persist();toastMsg('Saved')}
 function addWeeklyFocus(){let v=prompt('What is your focus for this week?');if(v!==null){db.simple.weeklyFocus=v;persist();render()}}
 function saveFinance(){db.finance={monthlyBills:$('monthlyBills').value,multiplier:+$('goalMultiplier').value||3,saved:$('savedSoFar').value};db.simple=db.simple||{};db.simple.financeV19=db.simple.financeV19||{goal:10000,saved:0,date:'2026-12-31',notes:'',bills:[]};db.simple.financeV19.saved=Math.max(0,+db.finance.saved||0);persist();render();if(typeof window.hm23Render==='function')try{window.hm23Render()}catch(e){}}
-function exportData(){let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(db,null,2)],{type:'application/json'}));a.download='elevate-2026-data.json';a.click()}
+function elevateBackupStorageKey(k){
+  if(!k || !/elevate|bucket|habit|journal|faith|nourish|selfcare|book|movie|week|month|quarter|year|goal|note|work|client|matter|task|financial|pleading/i.test(k)) return false;
+  return !/^elevate_(?:last_local_edit_at|cloud_initialized_v1|pre_sync_backup_v1)$/i.test(k);
+}
+function elevateBackupEnvelope(){
+  const localStorageData={};
+  for(let i=0;i<localStorage.length;i++){
+    const k=localStorage.key(i);
+    if(elevateBackupStorageKey(k)) localStorageData[k]=localStorage.getItem(k);
+  }
+  let mainDb={};
+  try{mainDb=JSON.parse(JSON.stringify(db));}catch(e){mainDb={};}
+  return {format:'elevate-backup-v2',exportedAt:new Date().toISOString(),db:mainDb,localStorage:localStorageData};
+}
+function exportData(){
+  const blob=new Blob([JSON.stringify(elevateBackupEnvelope(),null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=url; a.download='elevate-2026-backup.json'; a.click();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
 function triggerImportData(){const inp=document.getElementById('elevateImportFileInput');if(inp)inp.click()}
 function importDataFromFile(input){
   const f=input.files&&input.files[0]; if(!f)return;
@@ -9177,10 +9239,18 @@ function importDataFromFile(input){
     let parsed;
     try{ parsed=JSON.parse(reader.result); }
     catch(e){ alert('That file could not be read as an ELEVATE backup (invalid JSON).'); input.value=''; return; }
-    if(!parsed || typeof parsed!=='object'){ alert('That file could not be read as an ELEVATE backup.'); input.value=''; return; }
+    if(!parsed || typeof parsed!=='object' || Array.isArray(parsed)){ alert('That file could not be read as an ELEVATE backup.'); input.value=''; return; }
+    const backup=parsed.format==='elevate-backup-v2' ? parsed : {db:parsed,localStorage:{}};
+    const nextDb=backup.db && typeof backup.db==='object' && !Array.isArray(backup.db) ? backup.db : null;
+    if(!nextDb){ alert('That file does not contain a valid ELEVATE data object.'); input.value=''; return; }
     if(!confirm('Import this backup? This will replace everything currently in this copy of ELEVATE (books, habits, goals, everything) with the data from the file you selected.')) { input.value=''; return; }
     try{
-      localStorage.setItem(KEY, JSON.stringify(parsed));
+      if(backup.localStorage && typeof backup.localStorage==='object'){
+        Object.entries(backup.localStorage).forEach(([k,v])=>{
+          if(elevateBackupStorageKey(k) && k!==KEY && v!==null && v!==undefined) localStorage.setItem(k,String(v));
+        });
+      }
+      localStorage.setItem(KEY, JSON.stringify(nextDb));
       localStorage.setItem('elevate_last_local_edit_at', String(Date.now()));
       alert('Import complete. Reloading with your restored data…');
       location.reload();
@@ -12884,7 +12954,8 @@ document.addEventListener('DOMContentLoaded', function(){
  }
 
  window.hm23SaveGratitude=function(){
-   ensure();H().gratitude=$('hm23Gratitude').value.trim();persist();toastMsg?.('Gratitude saved for today');
+   const value=$('hm23Gratitude').value.trim();
+   ensure();H().gratitude=value;persist();toastMsg?.('Gratitude saved for today');
  };
  window.hm23AddLooking=function(){
    ensure();const title=prompt('What are you looking forward to?');if(!title)return;
@@ -13242,6 +13313,57 @@ document.addEventListener('DOMContentLoaded',function(){
     return data;
   }
 
+  // On a device's first cloud sign-in, preserve both the local and cloud
+  // collections instead of replacing one with the other. This is deliberately
+  // a no-loss merge for records: arrays are unioned by id where possible,
+  // objects keep local edits while filling missing fields from the cloud, and
+  // empty/default local values yield to a populated cloud value.
+  function cloudPlain(v){return !!v && Object.prototype.toString.call(v)==='[object Object]';}
+  function cloudCopy(v){
+    if(v===undefined) return v;
+    try{return JSON.parse(JSON.stringify(v));}catch(e){return v;}
+  }
+  function cloudSame(a,b){
+    try{return JSON.stringify(a)===JSON.stringify(b);}catch(e){return a===b;}
+  }
+  function cloudMerge(localValue,cloudValue,defaultValue){
+    if(defaultValue!==undefined && cloudSame(localValue,defaultValue)) return cloudCopy(cloudValue);
+    if(localValue===undefined || localValue===null || localValue==='') return cloudCopy(cloudValue);
+    if(cloudValue===undefined || cloudValue===null || cloudValue==='') return cloudCopy(localValue);
+    if(Array.isArray(localValue) && Array.isArray(cloudValue)){
+      const out=localValue.map(cloudCopy);
+      cloudValue.forEach(item=>{
+        const id=item && typeof item==='object' ? item.id : undefined;
+        const idx=id!==undefined ? out.findIndex(x=>x && typeof x==='object' && String(x.id)===String(id)) : -1;
+        if(idx>=0) out[idx]=cloudMerge(out[idx],item);
+        else if(!out.some(x=>cloudSame(x,item))) out.push(cloudCopy(item));
+      });
+      return out;
+    }
+    if(cloudPlain(localValue) && cloudPlain(cloudValue)){
+      const out={};
+      const keys=new Set([...Object.keys(localValue),...Object.keys(cloudValue)]);
+      keys.forEach(k=>{
+        const def=defaultValue && cloudPlain(defaultValue) ? defaultValue[k] : undefined;
+        out[k]=cloudMerge(localValue[k],cloudValue[k],def);
+      });
+      return out;
+    }
+    return cloudCopy(localValue);
+  }
+  function mergeFirstCloudSnapshot(localSnap,cloudSnap){
+    const merged=cloudMerge(localSnap,cloudSnap);
+    if(localSnap && cloudSnap && localSnap.db && cloudSnap.db){
+      let defaults;
+      try{defaults=typeof defaultDB!=='undefined'?defaultDB:undefined;}catch(e){}
+      merged.db=cloudMerge(localSnap.db,cloudSnap.db,defaults);
+    }
+    merged.localStorage=merged.localStorage||{};
+    if(merged.db) merged.localStorage[typeof KEY!=='undefined'?KEY:'elevate2026_week_unique_next_to_this_week']=JSON.stringify(merged.db);
+    merged.savedAt=new Date().toISOString();
+    return merged;
+  }
+
   function restore(payload){
     if(!payload) return;
     applyingCloud=true;
@@ -13289,11 +13411,24 @@ document.addEventListener('DOMContentLoaded',function(){
         // timestamps and push instead of pulling when local is ahead.
         const cloudSavedAt = data.state.savedAt ? new Date(data.state.savedAt).getTime() : 0;
         const localEditedAt = Number(localStorage.getItem('elevate_last_local_edit_at')||0);
+        if(firstRestore){
+          // First connection is the risky case: this device may already hold
+          // unsynced notes, goals, or media. Merge both snapshots, then write
+          // the combined state back before the one-time reload.
+          const localSnap=snapshot();
+          const merged=mergeFirstCloudSnapshot(localSnap,data.state);
+          restore(merged);
+          status('ELEVATE Cloud: Local + cloud data combined', true);
+          noteCloudSync(true);
+          await pushState(false);
+          location.reload();
+          return;
+        }
         // This check used to be skipped on a device's very first cloud connection
         // (firstRestore===true), which meant a device with real, newer local data
         // that had simply never synced before could have that data silently
         // overwritten by an older cloud snapshot the moment it first signed in.
-        // Always protect newer local data, first connection or not.
+        // First connections now take the merge path above.
         if(localEditedAt > cloudSavedAt){
           status('ELEVATE Cloud: Local changes are newer — syncing up', true);
           await pushState(false);
@@ -13408,9 +13543,12 @@ document.addEventListener('DOMContentLoaded',function(){
     setSignedUI(user);
     if(user) await pullState();
 
-    sb.auth.onAuthStateChange(async (event,session)=>{
+    // Supabase recommends keeping this callback synchronous. Starting another
+    // Supabase request directly inside an async auth callback can deadlock the
+    // client while it is still holding its auth lock.
+    sb.auth.onAuthStateChange((event,session)=>{
       const u=session?session.user:null; setSignedUI(u);
-      if(u && event==='SIGNED_IN') await pullState();
+      if(u && event==='SIGNED_IN') setTimeout(()=>pullState(),0);
     });
 
     // Debounced cloud save whenever existing app changes browser storage.
@@ -13829,36 +13967,8 @@ window.ELEVATE_ALLOW_AUTO_RESEED = false;
 
 <script id="elevate-remove-notes-demo-data-v3">
 (function(){
-  const DEMO_TITLES = new Set(["2026 Priorities", "Important Numbers", "Business Ideas", "Client Welcome Process", "Canoe Atlanta", "Things to Buy", "Random Thought", "Weekend Reset", "Savannah Trip", "Movie Idea", "Work Note", "Hair Idea", "Gift Ideas", "Receipt / Reference", "Quote"]);
-  function cleanDemoNotes(){
-    if(typeof db!=='object'||!db) return false;
-    db.simple=db.simple||{};
-    if(!Array.isArray(db.simple.notesV13)) db.simple.notesV13=[];
-
-    const before=db.simple.notesV13.length;
-    db.simple.notesV13=db.simple.notesV13.filter(n=>!DEMO_TITLES.has(String(n&&n.title||'').trim()));
-    const changed=db.simple.notesV13.length!==before;
-
-    if(changed){
-      try{ if(typeof persist==='function') persist(); }catch(e){console.warn('Notes demo cleanup persist:',e)}
-      try{ if(typeof nt13Render==='function') nt13Render(); else if(typeof render==='function') render(); }catch(e){}
-    }
-    return changed;
-  }
-
-  // Re-run long enough to catch notes arriving from cloud sync after initial page load.
-  let tries=0;
-  const timer=setInterval(()=>{
-    cleanDemoNotes();
-    tries++;
-    if(tries>=40) clearInterval(timer);
-  },500);
-
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',()=>setTimeout(cleanDemoNotes,50));
-  } else setTimeout(cleanDemoNotes,50);
-
-  window.addEventListener('focus',cleanDemoNotes);
+  // Retired cleanup. Titles are user content, so matching a title must never
+  // delete a note. This script remains as a stable marker for older builds.
 })();
 </script>
 
@@ -14500,7 +14610,8 @@ window.ELEVATE_ALLOW_AUTO_RESEED = false;
     document.body.appendChild(bar);
     document.getElementById('esbDownload').onclick=function(){
       try{
-        const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'});
+        const backup=typeof elevateBackupEnvelope==='function'?elevateBackupEnvelope():db;
+        const blob=new Blob([JSON.stringify(backup,null,2)],{type:'application/json'});
         const url=URL.createObjectURL(blob);
         const a=document.createElement('a');
         a.href=url; a.download='elevate2026-backup-'+new Date().toISOString().slice(0,10)+'.json';
@@ -16000,7 +16111,8 @@ window.BTBO_RESUMES = [
   function purgeBucketOnce(){
     const g=D();
     if(g.bucketPurged) return;
-    g.bucketList=[];
+    // The old migration cleared the entire bucket list on first render. Keep
+    // existing entries; only record that this compatibility pass has run.
     g.bucketPurged=true;
     persist();
   }
@@ -19531,6 +19643,73 @@ window.BTBO_RESUMES = [
       statusEl.textContent='Import failed: '+(e.message||e);
     }
   };
+})();
+</script>
+<script id="mycase-tasks-v1">
+(function(){
+  const TABLE='mycase_tasks_v1';
+  let sb=null,user=null;
+  const $=id=>document.getElementById(id)||document.createElement('div');
+  const esc=x=>String(x==null?'':x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  async function client(){
+    if(!window.supabase) return null;
+    // Reuse the single shared ELEVATE Cloud client instead of a second GoTrue
+    // instance (see pleading-pdf-workspace-v1 for why that causes auth issues).
+    if(!sb) sb=window.__elevateSB||window.supabase.createClient('https://ifdwrthhibvgwmxvlcgi.supabase.co','sb_publishable_lqSFOKsgJw0Qh1w6e1KUdw_Ln0V6czf');
+    window.__elevateSB=sb;
+    const r=await sb.auth.getSession(); user=r.data?.session?.user||null; return sb;
+  }
+  function fmtDate(d){ if(!d) return ''; try{ const dt=new Date(d+'T00:00:00'); return dt.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}); }catch(e){ return d; } }
+  function statusEl(){ return $('mctImportStatus'); }
+  window.mctImportFile=async function(){
+    const input=$('mctImportFile'); const file=input.files&&input.files[0];
+    if(!file){ return; }
+    await client();
+    if(!user){ statusEl().textContent='Please sign in to ELEVATE Cloud first (Settings) — this import needs your secure sign-in.'; return; }
+    statusEl().textContent='Reading file…';
+    try{
+      const text=await file.text();
+      const rows=JSON.parse(text);
+      if(!Array.isArray(rows)) throw new Error('That file does not look like a MyCase tasks export.');
+      const now=new Date().toISOString();
+      const payload=rows.map(r=>({
+        id:r.id, user_id:user.id, name:r.name||'', description:r.description||'',
+        priority:r.priority||null, due_date:r.due_date||null, case_id:r.case_id||null,
+        case_name:r.case_name||null, case_stage:r.case_stage||null,
+        updated_at:r.updated_at||now, synced_at:now
+      }));
+      statusEl().textContent=`Importing ${payload.length} task${payload.length===1?'':'s'}…`;
+      const res=await sb.from(TABLE).upsert(payload,{onConflict:'id'});
+      if(res.error) throw res.error;
+      statusEl().textContent=`✓ Imported ${payload.length} task${payload.length===1?'':'s'} from MyCase.`;
+      if(typeof toastMsg==='function') toastMsg('MyCase tasks imported');
+      input.value=''; $('mctImportBtn').disabled=true;
+      mctRefresh();
+    }catch(e){
+      statusEl().textContent='Import failed: '+(e.message||e);
+    }
+  };
+  window.mctRefresh=async function(){
+    await client();
+    const body=$('mctTableBody'), empty=$('mctEmpty'), synced=$('mctSyncedAt');
+    if(!body||!body.id) return; // Tasks page not in DOM yet
+    if(!user){ body.innerHTML=''; empty.style.display='block'; empty.textContent='Sign in to ELEVATE Cloud to see your synced MyCase tasks.'; synced.textContent=''; return; }
+    const res=await sb.from(TABLE).select('*').eq('user_id',user.id).order('due_date',{ascending:true,nullsFirst:false});
+    if(res.error){ empty.style.display='block'; empty.textContent='Could not load MyCase tasks: '+res.error.message; body.innerHTML=''; return; }
+    const rows=res.data||[];
+    if(!rows.length){ body.innerHTML=''; empty.style.display='block'; empty.textContent='No MyCase tasks synced yet. Import a file in Settings → Import MyCase Tasks.'; synced.textContent=''; return; }
+    empty.style.display='none';
+    body.innerHTML=rows.map(r=>`<tr><td>${esc(r.name)}</td><td>${esc(r.case_name||'—')}${r.case_stage?' <span class="small muted">('+esc(r.case_stage)+')</span>':''}</td><td>${esc(fmtDate(r.due_date))}</td><td>${esc(r.priority||'—')}</td></tr>`).join('');
+    const latest=rows.reduce((a,r)=>r.synced_at&&r.synced_at>a?r.synced_at:a,'');
+    synced.textContent=latest?('Last synced '+new Date(latest).toLocaleString()):'';
+  };
+  function init(){
+    const fileInput=$('mctImportFile');
+    if(fileInput&&fileInput.id) fileInput.addEventListener('change',()=>{ $('mctImportBtn').disabled=!fileInput.files.length; });
+    client().then(mctRefresh);
+    document.addEventListener('click',e=>{ if(e.target&&e.target.closest&&e.target.closest('[data-page="tasks"]')) setTimeout(mctRefresh,50); });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
 })();
 </script>
 </body></html>
